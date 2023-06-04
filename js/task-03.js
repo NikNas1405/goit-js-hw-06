@@ -33,24 +33,26 @@ const galleryListItem = images
 
 galleryList.insertAdjacentHTML("beforeend", galleryListItem);
 
-galleryList.style.listStyle = "none";
-galleryList.style.display = "flex";
-galleryList.style.flexDirection = "column";
-galleryList.style.flexWrap = "wrap";
-galleryList.style.justifyContent = "space-between";
-galleryList.style.gap = "10px";
+galleryList.style.cssText =
+  "list-style: none; display: flex; flex-direction: column; flex-wrap: wrap; justify-content: space-between; gap: 10px; ";
+
+//=============OR STYLES FOR galleryList (OLD VARIAN):==================
+// galleryList.style.listStyle = "none";
+// galleryList.style.display = "flex";
+// galleryList.style.flexDirection = "column";
+// galleryList.style.flexWrap = "wrap";
+// galleryList.style.justifyContent = "space-between";
+// galleryList.style.gap = "10px";
 
 const imagesOfGalleryList = document.querySelectorAll("img");
-for (let img of imagesOfGalleryList) {
+imagesOfGalleryList.forEach((img) => {
   img.style.width = "500px";
   img.style.height = "auto";
-}
+});
 
-// OR STYLES:
-// galleryList.style.cssText =
-//   "list-style: none; display: flex; flex - direction: column; flex - wrap: wrap; justify - content: space - between; gap: 10px; ";
-
-// imagesOfGalleryList.style.height = "auto";
-// imagesOfGalleryList.forEach((img) => {
-//   img.style.cssText = "width: 500px; height: auto;";
-// });
+//===============VERY BAD VARIANT:=========  - краще не використовувати застарілий варіант перебору
+//  const imagesOfGalleryList = document.querySelectorAll("img");
+// for (let img of imagesOfGalleryList) {
+//   img.style.width = "500px";
+//   img.style.height = "auto";
+// }

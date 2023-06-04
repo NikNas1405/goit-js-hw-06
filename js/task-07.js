@@ -8,14 +8,14 @@ const ref = {
   textRef: document.querySelector("#text"),
 };
 
-ref.inputRef.addEventListener("change", () => {
+ref.inputRef.addEventListener("input", () => {
   let updatetedFontSize = ref.inputRef.value;
   let textRefEl = ref.textRef;
   textRefEl.style.fontSize = updatetedFontSize + "px";
 });
 
 // OR 2 Var
-// ref.inputRef.addEventListener("change", (event) => {
+// ref.inputRef.addEventListener("input", (event) => {
 //   let textRefEl = ref.textRef;
 //   textRefEl.style.fontSize = `${event.currentTarget.value}px`;
 // });

@@ -11,15 +11,14 @@ const ref = {
   bodyRef: document.querySelector("body"),
 };
 
-let randomColor = function getRandomHexColor() {
-  return `#${Math.floor(Math.random() * 16777215)
-    .toString(16)
-    .padStart(6, 0)}`;
-};
-
 const actionChgColorRef = () => {
-  ref.bodyRef.style.backgroundColor = `${randomColor()}`;
-  ref.nameOlColorRef.textContent = `${randomColor()}`;
+  const randomColor = function getRandomHexColor() {
+    return `#${Math.floor(Math.random() * 16777215)
+      .toString(16)
+      .padStart(6, 0)}`;
+  };
+  ref.bodyRef.style.backgroundColor =
+    ref.nameOlColorRef.textContent = `${randomColor()}`;
 };
 
 ref.buttonChgColorRef.addEventListener("click", actionChgColorRef);

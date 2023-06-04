@@ -18,8 +18,9 @@ ref.inputRef.addEventListener("blur", (event) => {
     Number(event.currentTarget.value.trim().length) ===
     Number(ref.lengthRef.dataset.length)
   ) {
+    ref.inputRef.classList.remove("invalid");
     return ref.inputRef.classList.add("valid");
   }
   ref.inputRef.classList.remove("valid");
-  ref.inputRef.classList.add("invalid");
+  return ref.inputRef.classList.add("invalid");
 });
