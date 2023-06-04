@@ -84,7 +84,7 @@ buttonCreateRef.addEventListener("click", () => {
     Number(inputNumberOfBoxesToCreate.value.trim()) <
       Number(inputNumberOfBoxesToCreate.min)
   ) {
-    alert("Please enter number from 1 to 100");
+    alert("Будь ласка, введіть число від 1 до 100");
   } else {
     createBoxes(inputNumberOfBoxesToCreate.value.trim());
   }
@@ -108,6 +108,3 @@ function destroyBoxes() {
 // // має викликати функцію destroyBoxes()
 
 buttonDestroyRef.addEventListener("click", destroyBoxes);
-
-
-
