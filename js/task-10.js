@@ -3,39 +3,6 @@
 // // натискає кнопку Створити, після чого рендериться
 // // колекція. Натисненням на кнопку Очистити, колекція
 // // елементів очищається.
-
-// // <div id="controls">
-// //   <input type="number" min="1" max="100" step="1" />
-// //   <button type="button" data-create>Create</button>
-// //   <button type="button" data-destroy>Destroy</button>
-// // </div>
-
-// // <div id="boxes"></div>
-
-function getRandomHexColor() {
-  return `#${Math.floor(Math.random() * 16777215)
-    .toString(16)
-    .padStart(6, 0)}`;
-}
-
-// //алгоритм:
-// // 1. створити константи елементів, до яких будемо звертатися
-const controls = document.querySelector("controls");
-const inputNumberOfBoxesToCreate = document.querySelector('[type="number"]');
-const buttonCreateRef = document.querySelector("button[data-create]");
-const buttonDestroyRef = document.querySelector("button[data-destroy]");
-const boxElement = document.querySelector("#boxes");
-
-// // 2. створити Подію на інпут.
-
-inputNumberOfBoxesToCreate.addEventListener("input", (event) => {
-  let inputValue = event.currentTarget.value;
-  console.log(inputValue);
-});
-
-// // 3. створити функцію createBoxes, що має стоврити кількість кубиків,
-// //   скільки введено в Інпуті.
-// // УМОВА:
 // // Створи функцію createBoxes(amount), яка приймає один
 // // параметр - число. Функція створює стільки < div >,
 // // скільки вказано в amount і додає їх у div#boxes.
@@ -46,11 +13,34 @@ inputNumberOfBoxesToCreate.addEventListener("input", (event) => {
 // // форматі HEX.Використовуй готову функцію
 // // getRandomHexColor для отримання кольору.
 
+// //алгоритм:
+// // 1. створити константи елементів, до яких будемо звертатися
+// // 2. створити функцію createBoxes, що має стоврити кількість кубиків,
+// //   скільки введено в Інпуті.
+// // 3. створити подію для кнопки Create. має викликати функцію createBoxes.
+// // має перевіряти на число та видавати помилку або викликати функцію createBoxes після того,
+// // як натиснемо на кнопку Create.
+// // 4. створити функцію destroyBoxes() для очищення вмісту div#boxes
+// // 5. створити подію для кнопки Destroy яка очищає екран та інпут.
+// // має викликати функцію destroyBoxes()
+
+const controls = document.querySelector("controls");
+const inputNumberOfBoxesToCreate = document.querySelector('[type="number"]');
+const buttonCreateRef = document.querySelector("button[data-create]");
+const buttonDestroyRef = document.querySelector("button[data-destroy]");
+const boxElement = document.querySelector("#boxes");
+
+function getRandomHexColor() {
+  return `#${Math.floor(Math.random() * 16777215)
+    .toString(16)
+    .padStart(6, 0)}`;
+}
+
 function createBoxes(amount) {
   let boxesArray = [];
   let boxSizeDefoult = 30;
   for (let i = 0; i < amount; i += 1) {
-    boxSizeDefoult += 10 * i;
+    boxSizeDefoult += 10;
     const newBox = document.createElement("div");
     newBox.style.width = `${boxSizeDefoult}px`;
     newBox.style.height = `${boxSizeDefoult}px`;
@@ -66,16 +56,13 @@ function createBoxes(amount) {
 // //   let boxSize = 30;
 // //   const boxesArray = [];
 // //   for (let i = 0; i < amount; i += 1) {
-// //     boxSize += 10 * i;
+// //     boxSize += 10;
 // //     const div = `<div  style="margin: 10px; background-color: ${getRandomHexColor()}; width: ${boxSize}px; height: ${boxSize}px;"></div>`;
 // //     boxesArray.push(div);
 // //   }
 // //   boxElement.insertAdjacentHTML("beforeend", boxesArray.join(""));
 // // }
-
-// // 4. створити подію для кнопки Create. має викликати функцію createBoxes.
-// // має перевіряти на число та видавати помилку або викликати функцію createBoxes після того,
-// // як натиснемо на кнопку Create.
+//======================================================================
 
 buttonCreateRef.addEventListener("click", () => {
   if (
@@ -91,20 +78,9 @@ buttonCreateRef.addEventListener("click", () => {
   inputNumberOfBoxesToCreate.value = "";
 });
 
-// buttonCreateRef.addEventListener("click", () => {
-//   createBoxes(Number(inputNumberOfBoxesToCreate.value));
-// });
-
-// // 5. створити функцію destroyBoxes() для очищення вмісту div#boxes
-
-// Якщо у властивість innerHTML записати порожній рядок,
-// то вміст елемента буде очищено.Це простий і швидкий спосіб видалення всього вмісту.
-
 function destroyBoxes() {
   return (boxElement.innerHTML = "");
 }
-
-// // 6. створити подію для кнопки Destroy яка очищає екран та інпут.
-// // має викликати функцію destroyBoxes()
+// Якщо у властивість innerHTML записати порожній рядок, то вміст елемента буде очищено.Це простий і швидкий спосіб видалення всього вмісту.
 
 buttonDestroyRef.addEventListener("click", destroyBoxes);
